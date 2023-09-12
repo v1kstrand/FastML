@@ -1,0 +1,18 @@
+Complete this form before running the application by filling in the 
+details after each '->' sign.  or ' ' are not needed.
+
+Example: ' task_type - type: regression / classification -> classification '
+
+# task_type - type [ regression / classification ] ->regression
+
+# csv_path - Path to csv data, example [ C:/Users/.../data.csv ]->D:\Dokument\VS-Code\Kaggle\IT_HS\effective_python\ML_untitest\py_files\csv\diabetes_dataset.csv
+
+# target - Target column name, example [ target ]->TARGET
+
+# split_size - Train test split size (0.05 <= x <= 0.95), example [ 0.3 ]-> 0.2
+
+# scale - -> zscore
+
+# model_name - Final model name, example [ final_model ]-> model_diabetes
+
+# drop_columns - (Optional) Columns to drop, separate with ',' example [ col1,col2,col3 ]->

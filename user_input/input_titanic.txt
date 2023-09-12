@@ -1,0 +1,18 @@
+Complete this form before running the application by filling in the 
+details after each '->' sign.  or ' ' are not needed.
+
+Example: ' task_type - type: regression / classification -> classification '
+
+# task_type - type [ regression / classification ]->classification
+
+# csv_path - Path to csv data, example [ C:/Users/.../data.csv ]->csv\titanic.csv
+
+# target - Target column name, example [ target ]->Survived
+
+# split_size - Train test split size (0.05 <= x <= 0.95), example [ 0.3 ]->0.2
+
+# model_name - Final model name, example [ final_model ]->final_model
+
+# scale - -> zscore
+
+# drop_columns - (Optional) Columns to drop, separate with ',' example [ col1,col2,col3 ]->
