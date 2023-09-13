@@ -85,4 +85,4 @@ This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md)
 
 ## 📧 Contact
 
-- Email: [Gmail](mailto:David.Vikstrand@gmail.com)
+- Email: [David.Vikstrand@gmail.com](mailto:David.Vikstrand@gmail.com)
