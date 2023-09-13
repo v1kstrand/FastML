@@ -71,12 +71,6 @@ After execution, the best-performing model will be saved in the `models` folder 
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome! Please read the [contributing guidelines](CONTRIBUTING.md) to get started.
-
----
-
 ## 📜 License
 
 This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
