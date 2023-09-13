@@ -1,6 +1,8 @@
-from collections import Counter
+from collections import defaultdict
 
 from sklearn.model_selection import GridSearchCV
+
+from module.utils import get_user_choice
 
 
 class GridResult:
@@ -22,12 +24,14 @@ class GridResult:
     Methods:
      - add_grid_result(grid: GridSearchCV, model_type: str) -> None:
      - update_score_dict(score: list[int], model_type: str) -> None:
-     - evaluate_models_and_get_best() -> GridSearchCV:
-     - display_results(best_model: str) -> None:
+     - let_user_pick_preferred_model() -> tuple[GridSearchCV, str]:
+     - display_results() -> None:
+     - display_suggested_model() -> None:
     """
 
-    def __init__(self, score_dict: dict[str, tuple[int, str, str]]):
-        self.score_dict: dict[str, tuple[int, str, str]] = score_dict
+    def __init__(self, metrics: list[str]):
+        self.metrics: list[str] = metrics
+        self.score_dict: dict[str, dict[str, int]] = defaultdict(dict)
         self.grid_results: dict[str, GridSearchCV] = {}
 
     def add_grid_result(self, grid: GridSearchCV, model_type: str) -> None:
@@ -40,62 +44,54 @@ class GridResult:
         """
         self.grid_results[model_type] = grid
 
-    def update_score_dict(self, score: list[int], model_type: str):
-        """Update the score dictionary based on the evaluation.
-
-        This method takes a list of scores and a model type as input
-        parameters.
-        It compares each score with the current highest score for
-        each metric in the score dictionary.
-        The comparators ('>' or '<') are used to determine whether a
-        higher or lower score is desired for each metric.
+    def update_score_dict(self, score: dict[str, int], model_type: str):
+        """Update the score dictionary based on the scores
 
         Parameters:
-         - score (list[int]): A list of scores for each metric.
+         - score (dict[str, int]): A dict of scores for each metric.
          - model_type (str): The type of the model.
         """
-        comparison_func = {">": lambda x, y: x > y, "<": lambda x, y: x < y}
+        for metric in self.metrics:
+            self.score_dict[model_type][metric] = score[metric]
 
-        for idx, metric in enumerate(self.score_dict.keys()):
-            curr_high_score, _, comparator = self.score_dict[metric]
-            curr_comparison = comparison_func[comparator]
-            if curr_comparison(score[idx], curr_high_score):
-                self.score_dict[metric] = (score[idx], model_type, comparator)
-
-    def evaluate_models_and_get_best(self) -> GridSearchCV:
-        """Get the best model based on the evaluation metrics.
-
-        This method evaluates the models based on the evaluation
-        metrics stored in the score dictionary.
-        It checks each metric and counts the number of times a model
-        has the highest score for that metric. The model thats
-        appears the most is the best model.
-        The `display_results` method is called to display the results
-        of the best model.
+    def let_user_pick_preferred_model(
+        self, get_choise: callable = get_user_choice
+    ) -> tuple[GridSearchCV, str]:
+        """Let the user pick the preferred model from the grid search
+        results. A suggestion is provided based on the scores.
+        Finally, the selected model and a string of
+        the model type is returned.
 
         Returns:
          - GridSearchCV: The best model from the grid search results.
+         - model (str): The type of the model.
 
         """
-        model_count = Counter(m for _, m, _ in self.score_dict.values())
-        best_model = model_count.most_common(1)[0][0]
-        self.display_results(best_model)
-        return self.grid_results[best_model]
+        self.display_results()
+        self.display_suggested_model()
+        msg = "Please select the model you prefer: "
+        selection = get_choise(len(self.score_dict), msg)
+        model = list(self.score_dict.keys())[selection]
+        return self.grid_results[model], model
 
-    def display_results(self, best_model: str) -> None:
-        """Display the results of the grid search.
+    def display_results(self) -> None:
+        """Display the results of the grid search."""
+        print("\n\nEVALUATION RESULTS:\n")
+        for i, (model, metrics) in enumerate(self.score_dict.items(), 1):
+            model_metrics = "".join(
+                f"{metric}: {value:.2f}, " for metric, value in metrics.items()
+            )
+            print(f"{i}. {model.ljust(20)} - {model_metrics[:-2]}")
 
-        This method displays the evaluation results stored in the
-        score dictionary.
-        It iterates over each metric in the score dictionary and prints
-        the prints the top score and model for that metric.
-        Finally, it prints a summary line indicating the best model
-        for the dataset.
+    def display_suggested_model(self) -> None:
+        """Suggest the best model based on the evaluation metrics.
+        For classification, the calculation is based on highest added
+        accuracy and f1.
+        For regression, the calculation is based on highest r2."""
 
-        Args:
-         - best_model (str): The name of the best model.
-
-        """
-        for metric, (score, model, _) in self.score_dict.items():
-            print(f"Best {metric} - score: {score:.2f} from {model}")
-        print(f"\nRESULTS:\n{best_model} is the best model for this dataset")
+        best_model = defaultdict(int)
+        for model in self.score_dict:
+            best_model[model] += self.score_dict[model].get("accuracy", 0)
+            best_model[model] += self.score_dict[model].get("f1", 0)
+            best_model[model] += self.score_dict[model].get("r2", 0)
+        print(f"\nFastMl suggests: {max(best_model, key=best_model.get)}")

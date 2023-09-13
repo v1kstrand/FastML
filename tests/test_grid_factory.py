@@ -10,59 +10,51 @@ from module.grid_factory import GridFactory
 from module.grid_result import GridResult
 
 
-def test_grid_factory_build_classifier():
-    y_test = np.array([0, 1, 1, 0, 1])
-    factory = GridFactory()
+@pytest.fixture
+def setup_y_test():
+    return np.array([0, 1, 1, 0, 1])
 
+
+def test_grid_factory_build_classifier(setup_y_test):
     # Classifier
-    grid_result, evaluator = factory.build(True, y_test)
+    grid_result, evaluator = GridFactory.build(True, setup_y_test)
 
-    assert len(grid_result.score_dict) == 4
+    assert len(grid_result.metrics) == 4
     assert isinstance(grid_result, GridResult)
     assert isinstance(evaluator, ClassifierEvaluator)
 
     # Regressor
-    grid_result, evaluator = factory.build(False, y_test)
+    grid_result, evaluator = GridFactory.build(False, setup_y_test)
 
-    assert len(grid_result.score_dict) == 3
+    assert len(grid_result.metrics) == 3
     assert isinstance(grid_result, GridResult)
     assert isinstance(evaluator, RegressorEvaluator)
 
 
-def test_classifier_build():
-    y_test = np.array([0, 1, 1, 0, 1])
-    factory = GridFactory()
-
-    grid_result, evaluator = factory.classifier_build(y_test)
+def test_classifier_build(setup_y_test):
+    grid_result, evaluator = GridFactory.classifier_build(setup_y_test)
 
     assert isinstance(grid_result, GridResult)
     assert isinstance(evaluator, ClassifierEvaluator)
-
-    expected_score_dict = {
-        "precision": (-np.inf, "", ">"),
-        "recall": (-np.inf, "", ">"),
-        "f1": (-np.inf, "", ">"),
-        "accuracy": (-np.inf, "", ">"),
-    }
-    assert grid_result.score_dict == expected_score_dict
-    assert evaluator.grid_results_callback == grid_result.update_score_dict
+    assert grid_result.metrics == ["precision", "recall", "f1", "accuracy"]
+    assert (
+        evaluator.grid_results_callback.__func__
+        is grid_result.update_score_dict.__func__
+    )
 
 
-def test_regressor_build():
-    y_test = np.array([0, 1, 1, 0, 1])
+def test_regressor_build(setup_y_test):
     factory = GridFactory()
-    grid_result, evaluator = factory.regressor_build(y_test)
+    grid_result, evaluator = factory.regressor_build(setup_y_test)
 
     assert isinstance(grid_result, GridResult)
     assert isinstance(evaluator, RegressorEvaluator)
 
-    expected_score_dict = {
-        "mae": (np.inf, "", "<"),
-        "rmse": (np.inf, "", "<"),
-        "r2": (-np.inf, "", ">"),
-    }
-    assert grid_result.score_dict == expected_score_dict
-    assert evaluator.grid_results_callback == grid_result.update_score_dict
+    assert grid_result.metrics == ["mae", "rmse", "r2"]
+    assert (
+        evaluator.grid_results_callback.__func__
+        is grid_result.update_score_dict.__func__
+    )
 
 
 if __name__ == "__main__":

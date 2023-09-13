@@ -81,8 +81,8 @@ class DataCleaner:
     @staticmethod
     def clean_data(X: pd.DataFrame) -> np.ndarray:
         """
-        Cleans the data by imputing missing values and one-hot encoding
-        categorical columns.
+        Cleans the data by imputing missing values, one-hot encoding
+        categorical columns and dropping highly cardinal columns.
 
         Args:
          - X (pd.DataFrame): The input dataframe containing the data to
@@ -91,7 +91,8 @@ class DataCleaner:
         Returns:
          - np.ndarray: the cleaned data as a numpy array
         """
-        X, numerical, categorical = DataCleaner.separate_features(X)
+        numerical, categorical = DataCleaner.separate_features(X)
+        categorical = DataCleaner.get_low_cardinality_features(X, categorical)
         num_pipeline = Pipeline([("impute", SimpleImputer(strategy="mean"))])
         cat_pipeline = Pipeline(
             [
@@ -108,12 +109,10 @@ class DataCleaner:
                 ("cat", cat_pipeline, categorical),
             ]
         )
-        return full_pipeline.fit_transform(X)
+        return full_pipeline.fit_transform(X[numerical + categorical])
 
     @staticmethod
-    def separate_features(
-        X: pd.DataFrame,
-    ) -> tuple[pd.DataFrame, list[str], list[str]]:
+    def separate_features(X: pd.DataFrame) -> tuple[list[str], list[str]]:
         """
         Preparing the data for cleaning by separating the numerical
         and categorical features.
@@ -123,15 +122,36 @@ class DataCleaner:
              be separated.
 
         Returns:
-         - tuple[pd.DataFrame, list[str], list[str]]: A tuple
-             containing (1) the cleaned dataframe,
-             (2) a list of numerical feature names, (3) and a list of
-             categorical feature names.
+         - tuple[list[str], list[str]]: a list of numerical feature names,
+         and a list of categorical feature names.
         """
         numerical = X.select_dtypes(include=np.number).columns.tolist()
-        categorical = X.select_dtypes(exclude=np.number)
-        categorical = categorical.loc[:, X.nunique() <= 15].columns.tolist()
-        return X[numerical + categorical], numerical, categorical
+        categorical = X.select_dtypes(exclude=np.number).columns.tolist()
+        return numerical, categorical
+
+    @staticmethod
+    def get_low_cardinality_features(
+        X: pd.DataFrame, categorical, cardinal_limit: int = 20
+    ) -> list[str]:
+        """
+        Filters out categorical features with high cardinality.
+
+        Args:
+         - X (pd.DataFrame): The input dataframe containing the data to
+             be filtered.
+         - categorical (list[str]): A list of categorical feature names.
+         - cardinal_limit (int, optional): The upper limit of cardinality
+             for a categorical feature. Defaults to 20.
+
+        Returns:
+         - list[str]: A list of categorical feature names with low
+             cardinality.
+        """
+        return (
+            X[categorical]
+            .loc[:, X.nunique() <= cardinal_limit]
+            .columns.tolist()
+        )
 
 
 class DataTransformer:
@@ -142,7 +162,7 @@ class DataTransformer:
     Args:
      - source (Union[str, pd.DataFrame]): The data source.
          It can be either a file path or a DataFrame.
-     - loader_func (callable, optional): A function to load the data
+     - loader_function (callable, optional): A function to load the data
          from the source argument. Defaults to read_data.
      - cleaner_callback (callable, optional): A callback function
          to clean the data. Defaults to DataCleaner.clean_data.
@@ -170,12 +190,12 @@ class DataTransformer:
     def __init__(
         self,
         source: Union[str, pd.DataFrame],
-        loader_func: callable = None,
+        loader_function: callable = None,
         cleaner_callback: callable = None,
         validator_callback: callable = None,
     ) -> None:
-        loader_func = loader_func or read_data
-        self.df: pd.DataFrame = loader_func(source)
+        loader_function = loader_function or read_data
+        self.df: pd.DataFrame = loader_function(source)
         self.X: Union[pd.DataFrame, np.ndarray] = None
         self.y: np.ndarray = None
         self.cleaner_callback: callable = (
@@ -287,7 +307,6 @@ class DataTransformer:
             raise ValueError("scale must be either 'zscore' or 'minmax' (str)")
 
         X_train, X_test, y_train, y_test = data
-
         scaler = StandardScaler() if scale == "zscore" else MinMaxScaler()
         X_train = scaler.fit_transform(X_train)
         X_test = scaler.transform(X_test)

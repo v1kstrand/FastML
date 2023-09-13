@@ -12,26 +12,26 @@ CLASSIFICATION_THRESHOLD = 50
 # User file template
 USER_FILE = (
     "Complete this form before running the application by filling in the \n"
-    "details after each '->' sign. "
-    " or ' ' are not needed.\n\n"
+    "details after each '->' sign.\n\n"
     "Example: ' task_type - type: regression / classification -> classification '\n\n"
     "# task_type - type: regression / classification ->\n\n"
     "# csv_path - Path to csv data, example: C:/Users/.../data.csv ->\n\n"
     "# target - Target column name, example: target ->\n\n"
     "# split_size - Train test split size (0 <= x <= 1), example: 0.3 ->\n\n"
     "# model_name - Final model name, example: final_model ->\n\n"
-    "# scale - (Optional) Type: zscore (standard) / minmax ->\n\n"
+    "# scale - (Optional) Type: zscore / minmax ->\n\n"
     "# drop_columns - (Optional) Columns to drop, separate with '|' example: col1|col2|col3 ->"
 )
 
 
-def get_user_choice(limit: int, tries: int = inf) -> int:
+def get_user_choice(limit: int, msg: str = "", tries: int = inf) -> int:
     """
-    Function that gets the user's input choice (number between 0 and n)
-    and validates and returns it.
+    Function that gets the user's input choice (number between 0 and
+    limit) and validates and returns it.
 
     Args:
      - limit (int): The maximum choice number.
+     - msg (str): The message to be printed to the user.
      - tries (int, optional): The maximum number of of choices the user
          can make. Defaults to inf.
 
@@ -40,9 +40,8 @@ def get_user_choice(limit: int, tries: int = inf) -> int:
 
     Raises:
      - ValueError: If the user's choice is invalid after the maximum
+         number of tries
     """
-
-    msg = "Enter the number of the file you want to open: "
     choice = input(msg)
     while tries > 0 and (not choice.isdigit() or not 0 < int(choice) <= limit):
         print("Invalid choice.")
@@ -81,17 +80,21 @@ class FileHandler:
          - str: The content of the chosen file.
         """
         text_files = FileHandler.get_user_input_files()
+        FileHandler.print_files(text_files)
 
-        print("Available text files:")
-        for idx, file in enumerate(text_files):
-            print(f"{idx + 1}. {file}")
-
-        choice = get_choice(len(text_files))
+        msg = "Enter the number of the file you want to open: "
+        choice = get_choice(len(text_files), msg)
         folder = FileHandler.user_folder
         chosen_file_path = os.path.join(folder, text_files[choice])
 
         with open(chosen_file_path, "r", encoding="utf-8") as f:
             return f.read()
+
+    @staticmethod
+    def print_files(text_files: list[str]) -> None:
+        print("Available text files:")
+        for idx, file in enumerate(text_files):
+            print(f"{idx + 1}. {file}")
 
     @staticmethod
     def get_user_input_files(folder=None) -> list[str]:
@@ -200,7 +203,7 @@ def print_headline(msg: str) -> None:
     print(f"\n{'- '*30}\n{msg}\n{'- '*30}")
 
 
-def save_model(model: BaseEstimator, name: str) -> None:
+def save_model(model: BaseEstimator, name: str, model_type: str) -> None:
     """
     Saving the model as a joblib file.
 
@@ -212,8 +215,8 @@ def save_model(model: BaseEstimator, name: str) -> None:
     """
     os.makedirs("models", exist_ok=True)
 
-    print(f"\nSaving top model as '{name}'")
-    full_path = os.path.join("models", f"{name}.joblib")
+    print(f"\nSaving top model as '{name}_{model_type}.joblib'")
+    full_path = os.path.join("models", f"{name}_{model_type}.joblib")
     dump(model, full_path)
     print_headline("PLEASE ENJOY YOUR NEW MODEL")
 

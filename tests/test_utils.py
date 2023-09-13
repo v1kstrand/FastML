@@ -28,7 +28,7 @@ def test_write_file():
 # Test read_file method
 def test_read_file():
     FileHandler.write_file(r"user_input\mock_input.txt")
-    assert FileHandler.read(lambda x: 0).startswith("Complete this form")
+    assert FileHandler.read(lambda x, y: 0).startswith("Complete this form")
     os.remove(r"user_input\mock_input.txt")
 
 
@@ -67,12 +67,12 @@ def test_get_user_choice():
 def test_get_user_choice_invalid_choice():
     with patch("module.utils.input", side_effect=["11", "12"]):
         with pytest.raises(ValueError):
-            get_user_choice(10, 1)
+            get_user_choice(10, "", 1)
 
 
 def test_get_user_choice_valid_choice_after_invalid():
     with patch("module.utils.input", side_effect=["11", "5"]):
-        assert get_user_choice(10, 1) == 4
+        assert get_user_choice(10, "", 1) == 4
 
 
 # Test validate_data_type function
@@ -100,9 +100,9 @@ class Model:
 
 
 def test_save_model():
-    save_model(Model(), "mock_model")
-    assert os.path.exists(r"models\mock_model.joblib")
-    os.remove(r"models\mock_model.joblib")
+    save_model(Model(), "mock_model", "LogisticRegression")
+    assert os.path.exists(r"models\mock_model_LogisticRegression.joblib")
+    os.remove(r"models\mock_model_LogisticRegression.joblib")
 
 
 # TEST read_data FUNCTION

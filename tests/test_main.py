@@ -110,12 +110,16 @@ def test_save_best_model():
     Finally, we check if the file exists and remove it.
 
     """
+
     mock_grid_result = Mock()
-    mock_grid_result.evaluate_models_and_get_best.return_value = "Best Model"
+    mock_grid_result.let_user_pick_preferred_model.return_value = (
+        "Best Model",
+        "LogisticRegression",
+    )
 
     save_best_model(mock_grid_result, "mock_name")
-    assert os.path.exists(r"models\mock_name.joblib")
-    os.remove(r"models\mock_name.joblib")
+    assert os.path.exists(r"models\mock_name_LogisticRegression.joblib")
+    os.remove(r"models\mock_name_LogisticRegression.joblib")
 
 
 if __name__ == "__main__":

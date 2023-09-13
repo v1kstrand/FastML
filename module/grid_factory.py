@@ -51,34 +51,15 @@ class GridFactory:
     @staticmethod
     def regressor_build(y_test) -> tuple[GridResult, RegressorEvaluator]:
         """
-        Builds the grid result and evaluator for a regression model.
+        Builds the grid result and evaluator for a regression models.
 
-        This function takes the `y_test` variable as input, which
-        represents the true labels of the test dataset.
-        It initializes a `score_dict` dictionary to store the initial
-        score values for mae, rmse, and r2.
-        The scores are initialized with negative infinity
-        and infinity values (depending on the metric type),
-        empty strings for best best model type, and ">" as the
-        comparison operator. (e.g. for mae, the score is initialized
-        with (np.inf, "", "<") because a lower score is desired.
-        For r2, the score is initialized with (-np.inf, "", ">")
-        because a higher score is desired.)
+        Creates a grid_result object by giving it a list of regression
+        metrics as input (mae, rmse, and r2).
 
-        A `grid_result` object is created using the `score_dict`
-        dictionary, which will be used to store and update the scores
-        during the grid search process.
-
-        An `evaluator` object is also created by passing the `y_test`
-        variable and the `grid_result.update_score_dict` method as
-        arguments.
-
-        The `evaluator` object is responsible for evaluating the
-        performance of the regression models and updating the
-        `grid_result` object with the new scores.
-
-        Finally, the function returns a tuple containing the
-        `grid_result` and `evaluator` objects.
+        Creates an evaluator object by passing the `y_test` variable
+        and the `grid_result.update_score_dict` method as arguments.
+        grid_result.update_score_dict is a method that let the evaluator
+        update the score dictionary of the grid_result object.
 
         Args:
          - y_test: The true labels of the test dataset.
@@ -87,42 +68,25 @@ class GridFactory:
          - tuple[GridResult, RegressorEvaluator]: A tuple containing
              the `grid_result` and `evaluator` objects.
         """
-        score_dict = score_dict = {
-            "mae": (np.inf, "", "<"),
-            "rmse": (np.inf, "", "<"),
-            "r2": (-np.inf, "", ">"),
-        }
-        grid_result = GridResult(score_dict)
+        metrics = ["mae", "rmse", "r2"]
+        grid_result = GridResult(metrics)
         evaluator = RegressorEvaluator(y_test, grid_result.update_score_dict)
         return grid_result, evaluator
 
     @staticmethod
     def classifier_build(y_test) -> tuple[GridResult, ClassifierEvaluator]:
         """
-        Builds the grid result and evaluator for a classifier model.
+        Builds the grid result and evaluator for a classification
+        models.
 
-        This function takes the `y_test` variable as input, which
-        represents the true labels of the test dataset.
-        It initializes a `score_dict` dictionary to store the initial
-        score values for precision, recall, f1, and accuracy.
-        The scores are initialized with negative infinity values,
-        empty strings for best best model type, and ">" as the
-        comparison operator.
+        Creates a grid_result object by giving it a list of
+        classification metrics as input (precision, recall, f1, and
+        accuracy).
 
-        A `grid_result` object is created using the `score_dict`
-        dictionary, which will be used to store and update the scores
-        during the grid search process.
-
-        An `evaluator` object is also created by passing the `y_test`
-        variable and the `grid_result.update_score_dict` method as
-        arguments.
-
-        The `evaluator` object is responsible for evaluating the
-        performance of the classifier models and updating the
-        `grid_result` object with the new scores.
-
-        Finally, the function returns a tuple containing the
-        `grid_result` and `evaluator` objects.
+        Creates an evaluator object by passing the `y_test` variable
+        and the `grid_result.update_score_dict` method as arguments.
+        grid_result.update_score_dict is a method that let the evaluator
+        update the score dictionary of the grid_result object.
 
         Args:
          - y_test: The true labels of the test dataset.
@@ -131,12 +95,7 @@ class GridFactory:
          - tuple[GridResult, ClassifierEvaluator]: A tuple containing
              the `grid_result` and `evaluator` objects.
         """
-        score_dict = {
-            "precision": (-np.inf, "", ">"),
-            "recall": (-np.inf, "", ">"),
-            "f1": (-np.inf, "", ">"),
-            "accuracy": (-np.inf, "", ">"),
-        }
-        grid_result = GridResult(score_dict)
+        metrics = ["precision", "recall", "f1", "accuracy"]
+        grid_result = GridResult(metrics)
         evaluator = ClassifierEvaluator(y_test, grid_result.update_score_dict)
         return grid_result, evaluator

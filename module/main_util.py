@@ -113,5 +113,5 @@ def save_best_model(grid_result: GridResult, model_name: str) -> None:
      - model_name (str): The name of the model to be saved.
 
     """
-    final_model = grid_result.evaluate_models_and_get_best()
-    save_model(final_model, model_name)
+    final_model, model_type = grid_result.let_user_pick_preferred_model()
+    save_model(final_model, model_name, model_type)

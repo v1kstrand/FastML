@@ -153,14 +153,27 @@ def test_validate_data_invalid_drop_col(setup_data):
 def test_clean_data_high_cardinality():
     high_cardinality_df = pd.DataFrame(
         {
-            "feature1": list(map(str, range(16))),
-            "feature2": np.random.choice(["A", "B"], 16),
-            "feature3": np.random.randn(16),
-            "target": np.random.randint(0, 2, 16),
+            "feature1": list(map(str, range(21))),
+            "feature2": np.random.choice(["A", "B"], 21),
+            "feature3": np.random.randn(21),
+            "target": np.random.randint(0, 2, 21),
         }
     )
     high_cardinality_df = DataCleaner.clean_data(high_cardinality_df)
     assert high_cardinality_df.shape[1] == 3
+
+
+def test_clean_data_accepted_cardinality():
+    high_cardinality_df = pd.DataFrame(
+        {
+            "feature1": list(map(str, range(20))),
+            "feature2": np.random.choice(["A", "B"], 20),
+            "feature3": np.random.randn(20),
+            "target": np.random.randint(0, 2, 20),
+        }
+    )
+    high_cardinality_df = DataCleaner.clean_data(high_cardinality_df)
+    assert high_cardinality_df.shape[1] == 23
 
 
 def test_clean_data_remove_nan():
@@ -193,9 +206,27 @@ def test_clean_data_one_hot(setup_df):
 
 # Test separate_features method
 def test_separate_features(setup_df):
-    _, num_idx, cat_idx = DataCleaner.separate_features(setup_df)
+    num_idx, cat_idx = DataCleaner.separate_features(setup_df)
     assert len(num_idx) == 2
     assert len(cat_idx) == 1
+
+
+# Test get_low_cardinality_features method
+def test_get_low_cardinality_features(setup_df):
+    _, cat_idx = DataCleaner.separate_features(setup_df)
+    low_cardinality_features = DataCleaner.get_low_cardinality_features(
+        setup_df, cat_idx
+    )
+    assert len(low_cardinality_features) == 1
+
+
+def test_get_low_cardinality_features_high_cardinality(setup_df):
+    setup_df["feature1"] = list(map(str, range(100)))
+    _, cat_idx = DataCleaner.separate_features(setup_df)
+    low_cardinality_features = DataCleaner.get_low_cardinality_features(
+        setup_df, cat_idx
+    )
+    assert len(low_cardinality_features) == 0
 
 
 if __name__ == "__main__":

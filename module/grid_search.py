@@ -2,12 +2,13 @@ import warnings
 
 import numpy as np
 from sklearn.base import BaseEstimator
+from sklearn.exceptions import DataConversionWarning
 from sklearn.model_selection import GridSearchCV
 
 from module.model_factory import HyperParams
 from module.utils import print_headline
 
-warnings.warn = lambda *x, **y: None  # Disable warnings
+warnings.filterwarnings(action="ignore", category=DataConversionWarning)
 
 
 class GridSearch:
