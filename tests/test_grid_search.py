@@ -23,7 +23,6 @@ def setup_data():
 
 @pytest.fixture
 def setup_grid(setup_data):
-    X, y = make_classification(n_samples=100, n_features=20)
     models = {LogisticRegression(): {"C": [1, 10]}}
     return GridSearch(setup_data, Mock(), Mock(), models)
 
