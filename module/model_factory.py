@@ -83,7 +83,7 @@ class ModelFactory:
             SVR(): {"C": [1, 10, 100], "gamma": ["auto"]},
             NeuralNetRegressor(ANNRegressor): {
                 "module__num_features": [num_features],
-                "max_epochs": [100],
+                "max_epochs": [10],
                 "lr": [0.01],
                 "optimizer": [torch.optim.Adam],
                 "verbose": [0],
