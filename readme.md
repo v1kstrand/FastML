@@ -18,9 +18,9 @@ FastML is an Object-Oriented Python library designed to automate the end-to-end 
 ## 🎯 Features
 
 - **Data Cleaning** 🧹: Automated data preprocessing.
+- **Regression and Classification** 📊: Supports both types of problems.
 - **Grid Search** 🔍: Hyperparameter tuning for multiple models.
 - **Model Selection** 🏆: Allows the user to select the best model based on evaluation metrics.
-- **Regression and Classification** 📊: Supports both types of problems.
 - **High Test Coverage** 🛡️: 98% test coverage using Pytest.
 - **SOLID Principles** 🏗️: Strong adherence to SOLID principles and design patterns.
 ---
