@@ -28,7 +28,7 @@ class InputValidator:
         and 0 <= float(x) <= 1,
         "csv_path": lambda x: os.path.isfile(x),
         "target": None,
-        "scale": lambda x: x.lower() in ("zscore", "minmax", "none"),
+        "scale": lambda x: x.lower() in ("zscore", "minmax", ""),
         "model_name": None,
         "drop_columns": None,
     }
