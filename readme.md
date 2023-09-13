@@ -11,7 +11,7 @@
 
 ## 📌 Introduction
 
-FastML is an Object-Oriented Python library designed to automate the end-to-end process of machine learning projects. It cleans your data, performs grid search on multiple models, and selects the best-performing model based on your data type (regression or classification). Developed with a strong focus on design patterns and SOLID principles, FastML aims to provide a robust, maintainable, and efficient way to handle ML projects.
+FastML is an Object-Oriented Python library designed to automate the end-to-end process of machine learning projects. It cleans your data, performs grid search on multiple models based on your data type (regression or classification), and lets you pick the best model for the data. Developed with a strong focus on design patterns and SOLID principles, FastML aims to provide a robust, maintainable, and efficient way to handle ML projects.
 
 ---
 
