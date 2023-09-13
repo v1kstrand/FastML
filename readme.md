@@ -1,33 +1,24 @@
-### GitHub README Example for Your ML Project
-
----
-
-#### Project Title
-
-# AutoML: Automated Machine Learning with SOLID Principles
+# FastML: Automated Machine Learning with SOLID Principles
 
 ---
 
 #### Badges
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://travis-ci.com/yourusername/AutoML.svg?branch=master)](https://travis-ci.com/yourusername/AutoML)
 [![Coverage](https://img.shields.io/badge/coverage-98%25-green)](https://your-coverage-report-link)
 
 ---
 
-#### Project Overview
-
 ## 📌 Introduction
 
-AutoML is an Object-Oriented Python library designed to automate the end-to-end process of machine learning projects. It cleans your data, performs grid search on multiple models, and selects the best-performing model based on your data type (regression or classification). Developed with a strong focus on design patterns and SOLID principles, AutoML aims to provide a robust, maintainable, and efficient way to handle ML projects.
+FastML is an Object-Oriented Python library designed to automate the end-to-end process of machine learning projects. It cleans your data, performs grid search on multiple models, and selects the best-performing model based on your data type (regression or classification). Developed with a strong focus on design patterns and SOLID principles, FastML aims to provide a robust, maintainable, and efficient way to handle ML projects.
 
 ---
 
 ## 🎯 Features
 
 - Automated Data Cleaning
-- Grid Search on 5 Models
+- Grid Search on multiple models
 - Model Selection based on Performance
 - Adherence to SOLID Principles
 - 98% Test Coverage with Pytest
@@ -38,21 +29,21 @@ AutoML is an Object-Oriented Python library designed to automate the end-to-end 
 
 - Python
 - Scikit-Learn
+- PyTorch
+- Pandas
+- Skorch
 - Pytest
-- Travis CI
 
 ---
-
-#### Installation and Setup
 
 ## ⚙️ Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/AutoML.git
+git clone https://github.com/v1kstrand/FastML
 
 # Navigate to the project directory
-cd AutoML
+cd FastML
 
 # Install dependencies
 pip install -r requirements.txt
@@ -60,26 +51,25 @@ pip install -r requirements.txt
 
 ---
 
-#### Usage
+### 🚀 Usage
 
-## 🚀 Usage
+#### Step 1: Configure User Input
 
-```python
-from automl import AutoML
+Navigate to the `user_input` folder and open `user_input.txt` located there. Fill in the required fields to configure the machine learning task. Save the file.
 
-# Initialize AutoML
-automl = AutoML(data_path="your_data.csv", task="classification")
+#### Step 2: Run the Program
 
-# Run AutoML
-best_model = automl.run()
+Execute the `main.py` module to start the FastML program. This will read the configuration from the input file and execute the machine learning tasks accordingly.
 
-# Get model performance
-performance = automl.evaluate(best_model)
+```bash
+python main.py
 ```
 
----
+#### Step 3: Retrieve the Best Model
 
-#### Contributing
+After execution, the best-performing model will be saved in the `models` folder as a .joblib file.
+
+---
 
 ## 🤝 Contributing
 
@@ -87,32 +77,12 @@ Contributions are welcome! Please read the [contributing guidelines](CONTRIBUTIN
 
 ---
 
-#### License and Credits
-
 ## 📜 License
 
 This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
 
 ---
 
-#### Contact Information
-
 ## 📧 Contact
 
-- LinkedIn: [Your LinkedIn](#)
-- Twitter: [@YourTwitter](#)
-- Email: [Your Email](mailto:youremail@example.com)
-
----
-
-### The Takeaway
-
-1. **Technical Excellence**: Your README should reflect the technical rigor you've put into the project. Highlight your adherence to design patterns, SOLID principles, and high test coverage.
-
-2. **User-Centric**: Provide clear, actionable steps for installation and usage to encourage adoption and collaboration.
-
-3. **Engagement**: Use engaging language and visuals to make your README more appealing.
-
-By crafting a compelling README, you're not just describing your project; you're inviting others to engage with it. Each section you craft adds another layer of clarity and accessibility to your work.
-
-Remember, the journey to mastery involves not just coding but also effective communication and collaboration. Let's continue to navigate this path with the precision and understanding that each step demands.
+- Email: [Gmail](mailto:David.Vikstrand@gmail.com)
