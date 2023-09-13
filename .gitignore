@@ -1,5 +1,5 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/
+**__pycache__/
 *.py[cod]
 *.pyo
 
@@ -24,12 +24,14 @@ venv/
 # pytest cache
 htmlcov/
 .coverage
+.pytest_cache/
 
 # ide
 .vscode/
 
 #other
 Inlämningsuppgift#1.pdf
+notebooks.ipynb
 
 # FastML data
 models/
