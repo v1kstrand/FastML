@@ -215,7 +215,7 @@ def save_model(model: BaseEstimator, name: str, model_type: str) -> None:
     """
     os.makedirs("models", exist_ok=True)
 
-    print(f"\nSaving top model as '{name}_{model_type}.joblib'")
+    print(f"\nSaving model as '{name}_{model_type}.joblib'")
     full_path = os.path.join("models", f"{name}_{model_type}.joblib")
     dump(model, full_path)
     print_headline("PLEASE ENJOY YOUR NEW MODEL")
