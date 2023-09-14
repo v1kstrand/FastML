@@ -1,6 +1,7 @@
 import os
 import re
 from typing import Union
+from pandas import read_csv
 
 from module.utils import FileHandler
 
@@ -26,7 +27,7 @@ class InputValidator:
         "task_type": lambda x: x.lower() in ("classification", "regression"),
         "split_size": lambda x: x.replace(".", "", 1).isdigit()
         and 0 <= float(x) <= 1,
-        "csv_path": lambda x: os.path.isfile(os.path.normpath(x)),
+        "csv_path": lambda x: read_csv(x),
         "target": None,
         "scale": lambda x: x.lower() in ("zscore", "minmax", ""),
         "model_name": None,
@@ -98,10 +99,14 @@ class InputValidator:
          - ValueError: If any field fails to meet its rule.
         """
         for key, rule in InputValidator.validation_rules.items():
-            if rule and not rule(user_input[key]):
+            if not rule:
+                continue
+            try:
+                assert rule(user_input[key])
+            except ValueError as e:
                 raise ValueError(
                     f"Invalid value for {key}. Please check the user input file."
-                )
+                ) from e
 
 
 class UserInputHandler:
