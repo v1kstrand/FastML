@@ -5,7 +5,7 @@ Example: ' task_type - type: regression / classification -> classification '
 
 # task_type - type: regression / classification -> regression
 
-# csv_path - Path or URL to .CSV, example: C:/Users/.../data.csv -> bodyfat.csv
+# csv_path - Path or URL to .CSV, example: C:/Users/.../data.csv -> csv/bodyfat.csv
 
 # target - Target column name, example: target -> abdomen
 
