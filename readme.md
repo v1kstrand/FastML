@@ -47,6 +47,14 @@ cd FastML
 
 # Install dependencies
 pip install -r requirements.txt
+
+NOTEBOOK
+# Run in cell
+!git clone https://github.com/v1kstrand/FastML
+import os
+path = os.path.join(os.getcwd(), "FastML")
+os.chdir(path)
+!pip install -r requirements.txt
 ```
 
 ---
