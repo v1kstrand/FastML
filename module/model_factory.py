@@ -83,8 +83,8 @@ class ModelFactory:
             SVR(): {"C": [1, 10, 100], "gamma": ["auto"]},
             NeuralNetRegressor(ANNRegressor): {
                 "module__num_features": [num_features],
-                "max_epochs": [40],
-                "lr": [0.005],
+                "max_epochs": [100],
+                "lr": [0.01, 0.001],
                 "optimizer": [torch.optim.Adam],
                 "verbose": [0],
                 "device": ["cuda" if torch.cuda.is_available() else "cpu"],
