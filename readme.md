@@ -32,12 +32,12 @@ FastML is an Object-Oriented Python library designed to automate the end-to-end 
 
 ## 🛠️ Technologies Used
 
-- Python
-- Scikit-Learn
-- PyTorch
-- Pandas
-- Skorch
-- Pytest
+- **Python**: Core language for development and data science.
+- **Scikit-Learn**: Machine learning tools for data analysis, modeling.
+- **PyTorch**: Flexible library for deep learning and research.
+- **Pandas**: Data manipulation and storage for large datasets.
+- **Skorch**: Scikit-learn compatible wrapper for PyTorch.
+- **Pytest**: Testing framework for unit and functional tests.
 
 ---
 
