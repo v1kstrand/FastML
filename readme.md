@@ -39,6 +39,7 @@ FastML is an Object-Oriented Python library designed to automate the end-to-end 
 ## ⚙️ Installation
 
 ```bash
+Shell
 # Clone the repository
 git clone https://github.com/v1kstrand/FastML
 
@@ -47,13 +48,19 @@ cd FastML
 
 # Install dependencies
 pip install -r requirements.txt
+```
 
-NOTEBOOK
-# Run in cell
+```bash
+Notebook
+# Clone the repositor
 !git clone https://github.com/v1kstrand/FastML
+
+# Navigate to the project directory
 import os
 path = os.path.join(os.getcwd(), "FastML")
 os.chdir(path)
+
+# Install dependencies
 !pip install -r requirements.txt
 ```
 
@@ -67,10 +74,14 @@ Navigate to the `user_input` folder and open `user_input.txt` located there. Fil
 
 #### Step 2: Run the Program
 
-Execute the `main.py` module to start the FastML program. This will read the configuration from the input file and execute the machine learning tasks accordingly.
+Execute the `FastML.py` module to start the FastML program. This will read the configuration from the input file and execute the machine learning tasks accordingly.
 
 ```bash
+Shell
 python FastML
+
+Notebook
+%run FastML
 ```
 
 #### Step 3: Retrieve the Best Model
