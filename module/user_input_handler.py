@@ -27,7 +27,7 @@ class InputValidator:
         "task_type": lambda x: x.lower() in ("classification", "regression"),
         "split_size": lambda x: x.replace(".", "", 1).isdigit()
         and 0 <= float(x) <= 1,
-        "csv_path": lambda x: isinstance(read_csv(x), DataFrame)
+        "csv_path": lambda x: isinstance(read_csv(x), DataFrame),
         "target": None,
         "scale": lambda x: x.lower() in ("zscore", "minmax", ""),
         "model_name": None,
