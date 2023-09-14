@@ -101,7 +101,7 @@ graph TD;
     Class_GridFactory-->|Stores grid search results|Class_GridResult;
 
     %% Final Result
-    Class_GridResult-->|Allows user to select optimal model|Final_Result;
+    Class_GridResult-->|Allows user to select optimal model|Joblib_Final_Result;
 
 ```
 
