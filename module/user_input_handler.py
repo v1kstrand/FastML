@@ -1,7 +1,7 @@
 import os
 import re
 from typing import Union
-from pandas import read_csv
+from pandas import read_csv, DataFrame
 
 from module.utils import FileHandler
 
@@ -27,7 +27,7 @@ class InputValidator:
         "task_type": lambda x: x.lower() in ("classification", "regression"),
         "split_size": lambda x: x.replace(".", "", 1).isdigit()
         and 0 <= float(x) <= 1,
-        "csv_path": lambda x: read_csv(x),
+        "csv_path": lambda x: isinstance(read_csv(x), DataFrame)
         "target": None,
         "scale": lambda x: x.lower() in ("zscore", "minmax", ""),
         "model_name": None,
