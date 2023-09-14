@@ -5,7 +5,7 @@ Example: ' task_type - type: regression / classification -> classification '
 
 # task_type - type [ regression / classification ]->classification
 
-# csv_path - Path to csv data, example [ C:/Users/.../data.csv ]->csv\titanic.csv
+# csv_path - Path to csv data, example [ C:/Users/.../data.csv ]->csv/titanic.csv
 
 # target - Target column name, example [ target ]->Survived
 
