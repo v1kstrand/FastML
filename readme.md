@@ -38,8 +38,8 @@ FastML is an Object-Oriented Python library designed to automate the end-to-end 
 
 ## ⚙️ Installation
 
-```bash
 Shell
+```bash
 # Clone the repository
 git clone https://github.com/v1kstrand/FastML
 
@@ -50,8 +50,8 @@ cd FastML
 pip install -r requirements.txt
 ```
 
-```bash
 Notebook
+```bash
 # Clone the repositor
 !git clone https://github.com/v1kstrand/FastML
 
