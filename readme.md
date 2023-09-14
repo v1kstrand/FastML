@@ -76,12 +76,13 @@ Navigate to the `user_input` folder and open `user_input.txt` located there. Fil
 
 Execute the `FastML.py` module to start the FastML program. This will read the configuration from the input file and execute the machine learning tasks accordingly.
 
-```bash
 Shell
-python FastML
-
+```bash
+python FastML.py
+```
 Notebook
-%run FastML
+```bash
+%run FastML.py
 ```
 
 #### Step 3: Retrieve the Best Model
