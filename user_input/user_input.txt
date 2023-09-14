@@ -1,11 +1,11 @@
 Complete this form before running the application by filling in the 
-details after each '->' sign.  or ' ' are not needed.
+details after each '->' sign.
 
 Example: ' task_type - type: regression / classification -> classification '
 
 # task_type - type: regression / classification ->
 
-# csv_path - Path to csv data, example: C:/Users/.../data.csv ->
+# csv_path - Path or URL to .CSV, example: C:/Users/.../data.csv ->
 
 # target - Target column name, example: target ->
 
@@ -13,6 +13,6 @@ Example: ' task_type - type: regression / classification -> classification '
 
 # model_name - Final model name, example: final_model ->
 
-# scale - (Optional) Type: zscore (standard) / minmax ->
+# scale - (Optional) Type: zscore / minmax ->
 
 # drop_columns - (Optional) Columns to drop, separate with '|' example: col1|col2|col3 ->
