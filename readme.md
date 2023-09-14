@@ -57,7 +57,7 @@ pip install -r requirements.txt
 
 Notebook
 ```bash
-# Clone the repositor
+# Clone the repository
 !git clone https://github.com/v1kstrand/FastML
 
 # Navigate to the project directory
