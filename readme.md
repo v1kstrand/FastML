@@ -98,7 +98,7 @@ After execution, the selected model will be saved in `models` folder as a .jobli
 
 ## ⚡ Quickstart
 
-Upon successful installation, FastML is pre-packaged with example input files — input_titanic.txt for classification tasks and input_diabetes.txt for regression tasks. Corresponding .csv files are located in the CSV folder.
+Upon successful installation, FastML is pre-packaged with example input files — input_titanic.txt for classification tasks and input_bodyfat.txt for regression tasks. Corresponding .csv files are located in the CSV folder.
 
 To experience the functionality and features of FastML, simply execute the FastML.py script. This will automatically engage the program with the provided test files, offering you an, hands-on introduction to its capabilities.
 
