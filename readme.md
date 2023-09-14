@@ -79,6 +79,32 @@ To experience the functionality and features of FastML, simply execute the FastM
 
 ---
 
+## 🌐 Flowchart
+
+```mermaid
+graph TD;
+    %% User Input
+    TextFile_user_input.txt-->|Reads input from 'user_input' folder|Class_UserInputHandler;
+
+    %% Data Transformation
+    Class_UserInputHandler-->|Parses text file to dictionary|Class_DataTransformer;
+    Class_DataTransformer-->|Cleans & splits data into train/test sets|Class_GridSearch;
+
+    %% Grid Search Execution
+    Class_ModelFactory-->|Generates models & parameters|Class_GridSearch;
+    Class_GridSearch-->|Executes grid search|Class_Evaluator;
+    Class_GridSearch-->|Stores grid search results|Class_GridResult;  
+    Class_Evaluator-->|Evaluates & stores model metrics|Class_GridResult;
+
+    %% Grid Configuration
+    Class_GridFactory-->|Creates grid configurations|Class_Evaluator;
+    Class_GridFactory-->|Stores grid search results|Class_GridResult;
+
+    %% Final Result
+    Class_GridResult-->|Allows user to select optimal model|Final_Result;
+
+```
+
 ## 📜 License
 
 This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
