@@ -1,3 +1,8 @@
+```bash
+This repository is part of an academic project and is not intended for production use.
+```
+
+
 # FastML: Automated Machine Learning with SOLID Principles
 
 ---
