@@ -15,7 +15,7 @@ USER_FILE = (
     "details after each '->' sign.\n\n"
     "Example: ' task_type - type: regression / classification -> classification '\n\n"
     "# task_type - type: regression / classification ->\n\n"
-    "# csv_path - Path to csv data, example: C:/Users/.../data.csv ->\n\n"
+    "# csv_path - Path or URL to CSV, example: C:/Users/.../data.csv ->\n\n"
     "# target - Target column name, example: target ->\n\n"
     "# split_size - Train test split size (0 <= x <= 1), example: 0.3 ->\n\n"
     "# model_name - Final model name, example: final_model ->\n\n"
