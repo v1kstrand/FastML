@@ -5,7 +5,7 @@ Example: ' task_type - type: regression / classification -> classification '
 
 # task_type - type [ regression / classification ] ->regression
 
-# csv_path - Path to csv data, example [ C:/Users/.../data.csv ]->D:\Dokument\VS-Code\Kaggle\IT_HS\effective_python\ML_untitest\py_files\csv\diabetes_dataset.csv
+# csv_path - Path to csv data, example [ C:/Users/.../data.csv ]->csv/diabetes_dataset.csv
 
 # target - Target column name, example [ target ]->TARGET
 
