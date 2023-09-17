@@ -2,13 +2,16 @@
 FastML Main Module
 ==================
 
-This is the main module for the FastML project, a machine learning framework designed to simplify the model selection process. The module orchestrates the end-to-end workflow, from handling user input to saving the best model after performing grid search.
+This is the main module for the FastML project. It's designed to simplify
+the model selection process. The module orchestrates the end-to-end 
+workflow, from handling user input to saving the best model after grid 
+search.
 
 Functions
 ---------
 - handle_user_input : Collects and validates user input.
 - transform_data : Transforms the dataset based on user input.
-- prepare_models_and_grid : Prepares the models and grid for grid search.
+- prepare_models_and_grid : Readies models and grid for grid search.
 - perform_grid_search : Executes grid search on the models.
 - save_best_model : Saves the best model based on evaluation metrics.
 
@@ -19,7 +22,6 @@ Main Function
 Usage
 -----
 Run this module as the entry point to the FastML application.
-
 """
 
 from module.main_util import (
