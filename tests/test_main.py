@@ -84,16 +84,20 @@ def test_perform_grid_search():
     mock_data = [1] * 4
 
     with patch("module.main_util.GridSearch") as MockGridSearch:
+        # perform_grid_search is called with mock data
         perform_grid_search(
             mock_data, mock_evaluator, mock_grid_result, mock_models
-        )
+        ) 
+        # assert GridSearch was called with the correct arguments   
         MockGridSearch.assert_called_once_with(
             mock_data,
             mock_evaluator.evaluate,
             mock_grid_result.add_grid_result,
             mock_models,
-        )
+        ) 
+        # assert execute method was called once
         MockGridSearch.return_value.execute.assert_called_once()
+
 
 
 def test_save_best_model():
