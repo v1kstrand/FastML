@@ -3,16 +3,16 @@ details after each '->' sign.
 
 Example: ' task_type - type: regression / classification -> classification '
 
-# task_type - type: regression / classification -> regression
+# task_type - type: regression / classification ->regression
 
-# csv_path - Path or URL to .CSV, example: C:/Users/.../data.csv -> csv/bodyfat.csv
+# csv_path - Path or URL to .CSV, example: C:/Users/.../data.csv ->csv/bodyfat.csv
 
-# target - Target column name, example: target -> abdomen
+# target - Target column name, example: target ->abdomen
 
-# split_size - Train test split size (0 <= x <= 1), example: 0.3 -> 0.2
+# split_size - Train test split size (0 <= x <= 1), example: 0.3 ->0.2
 
-# model_name - Final model name, example: final_model -> bodyfat_model
+# model_name - Final model name, example: final_model ->bodyfat_model
 
-# scale - (Optional) Type: zscore / minmax -> minmax
+# scale - (Optional) Type: zscore / minmax ->minmax
 
-# drop_columns - (Optional) Columns to drop, separate with '|' example: col1|col2|col3 -> id
+# drop_columns - (Optional) Columns to drop, separate with '|' example: col1|col2|col3 ->id
