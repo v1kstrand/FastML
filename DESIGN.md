@@ -5,7 +5,7 @@ Welcome to FastML, a compact yet powerful machine learning framework created wit
 
 ### The Thought Process and Learning Journey
 
-When I embarked on the journey to create FastML, my initial goal was multifaceted. I aimed to tackle the complexities and challenges that accompany machine learning tasks, while also diving into the world of design patterns and principles. Building a functional framework thats robust, scalable and adheres to key design principles.
+When I started to work on FastML, my initial goal was multifaceted. I aimed to tackle the complexities and challenges that comes with machine learning tasks, while also diving into the world of design patterns and principles. Building a functional framework thats robust, scalable and adheres to key design principles.
 
 #### Exploring Design Patterns
 
