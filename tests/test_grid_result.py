@@ -51,6 +51,7 @@ def test_let_user_pick_preferred_model_func_call(setup_grid_with_score):
     mock_func = Mock()
     setup_grid_with_score.display_results = mock_func
     setup_grid_with_score.display_suggested_model = mock_func
+    # User will pick model 1 each time (lambda x, y: 1)
     setup_grid_with_score.let_user_pick_preferred_model(lambda x, y: 1)
     assert mock_func.call_count == 2
 
