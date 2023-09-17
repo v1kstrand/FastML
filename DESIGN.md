@@ -50,7 +50,7 @@ graph TD;
 
 - **Single Responsibility Principle (SRP)**: I aimed let each class and its methods have a narrow and well defiend responsibility. For example, the `GridSearch` class is responsible for searching the parameter space, while its methods focus on specific aspects like parameter validation or search execution. Similarly, the `Evaluator` class and its methods are solely responsible for calculating metrics.
 
-- **Open/Closed Principle**: Both the system and its individual methods are open for extension but closed for modification. You can add new types of evaluators or new ways of storing results without changing the existing code. 
+- **Open/Closed Principle**: Both the system and its individual methods are open for extension but closed for modification. You can add new types of evaluators or new ways of storing results without changing the existing code. Although there might be room for improvements here, my goal was to make this a good starting point for future enhancements.
 
 - **Loose Coupling**: The use of callbacks and dependency injection makes not only the classes but also their methods loosely coupled. This modular approach makes the system easier to test at both the class and method levels. For example, the `GridSearch` class is loosely coupled with the `Evaluator` class, by using a callback to pass the `Evaluator` class to the `GridSearch` 
 
