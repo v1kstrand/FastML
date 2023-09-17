@@ -48,9 +48,9 @@ graph TD;
 
 ### Strongly Addressed Principles:
 
-- **Single Responsibility Principle (SRP)**: Each class and its methods have a single reason to change. For example, the `GridSearch` class is responsible for searching the parameter space, while its methods focus on specific aspects like parameter validation or search execution. Similarly, the `Evaluator` class and its methods are solely responsible for calculating metrics.
+- **Single Responsibility Principle (SRP)**: I aimed let each class and its methods have a narrow and well defiend responsibility. For example, the `GridSearch` class is responsible for searching the parameter space, while its methods focus on specific aspects like parameter validation or search execution. Similarly, the `Evaluator` class and its methods are solely responsible for calculating metrics.
 
-- **Open/Closed Principle**: Both the system and its individual methods are open for extension but closed for modification. You can add new types of evaluators or new ways of storing results without changing the existing code. Methods are designed to be overridden or extended where appropriate.
+- **Open/Closed Principle**: Both the system and its individual methods are open for extension but closed for modification. You can add new types of evaluators or new ways of storing results without changing the existing code. 
 
 - **Loose Coupling**: The use of callbacks and dependency injection makes not only the classes but also their methods loosely coupled. This modular approach makes the system easier to test at both the class and method levels. For example, the `GridSearch` class is loosely coupled with the `Evaluator` class, by using a callback to pass the `Evaluator` class to the `GridSearch` 
 
@@ -58,14 +58,14 @@ graph TD;
 
 - **Dependency Injection & Inversion**: The architecture is designed to minimize tight coupling between classes. Utilizing callbacks and runtime dependency injection, the system achieves a high degree of modularity. This design choice aligns well with the Dependency Inversion Principle, as it enables easier testing, maintenance, and future expansion.
 
-- **Don't Repeat Yourself (DRY)**: By centralizing the logic for storing results and determining the best model in the `GridResult` class and its methods, you avoid repeating this logic in multiple places within the class or across the system.
+- **Don't Repeat Yourself (DRY)**: Avoid repeating this logic in multiple places within the class or across the system.
 
 
 ### Additional Principles Addressed:
-- **Liskov Substitution Principle**: The architecture employs an interface for the `Evaluator` class, facilitating the substitution of various evaluator types without disrupting the system's integrity. While this is a step in the right direction, additional opportunities for improvement exist. Specifically, classes like `GridSearch` and `GridResult` could also be abstracted into interfaces, thereby enhancing the system's flexibility and extensibility.
+- **Liskov Substitution Principle**: The system uses a flexible design for the `Evaluator` class, making it easy to swap out different types of evaluators without causing issues. This is good, but there's room for improvement. Specifically, making classes like `GridSearch` and `GridResult` more flexible could make the system even better and easier to extend in the future.
 
 - **Interface Segregation Principle**:
-In alignment with the Liskov Substitution Principle, the `Evaluator` interface has been designed to be modular and focused. This approach allows for the segregation of responsibilities into smaller, more specialized interfaces, should the need arise in future iterations of the project.
+In alignment with the Liskov Substitution Principle, the `Evaluator` interface has been designed to be modular and focused. This approach allows for the segregation of responsibilities into smaller, more specialized interfaces.
 
 ---
 
