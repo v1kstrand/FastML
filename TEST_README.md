@@ -6,6 +6,8 @@ At present, the test modules lack comprehensive documentation, an issue I plan t
 
 - The function names within these sections have descriptive titles, detailing the specific aspects of each method being tested.
 
+- If no specific aspects are being tested, the function name is simply the name of the method being tested.
+
 For example:
 
 ```python
