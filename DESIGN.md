@@ -2,16 +2,20 @@
 
 Welcome to FastML, a compact yet powerful machine learning framework created with the goal of streamlining the model selection process. It aims to offer a user-friendly, modular, and extensible solution for data scientists.
 
-### The Thought Process
 
-When I set out to create FastML, my primary focus was to address the complexities and challenges commonly associated with machine learning tasks. I wanted to build a framework that not only simplifies these tasks but also adheres to key design principles, ensuring long-term maintainability and scalability.
+### The Thought Process and Learning Journey
 
-### The Architecture and Learning Journey
+When I embarked on the journey to create FastML, my initial goal was multifaceted. I aimed to tackle the complexities and challenges that accompany machine learning tasks, while also diving into the world of design patterns and principles. Building a functional framework thats robust, scalable and adheres to key design principles.
 
-The architecture of FastML serves as a practical exploration of my journey into understanding and implementing key design patterns and principles. While incorporating elements like the Single Responsibility Principle and Dependency Inversion, the project became a hands-on exercise in creating a system that is both robust and flexible. 
+#### Exploring Design Patterns
 
-Through FastML, I've been able to take theoretical concepts and apply them in a real-world context, thereby gaining valuable insights into how design principles can shape and strengthen a software solution. 
+The development of FastML became a hands-on learning experience for me. I took this opportunity to explore and implement various design patterns and principles like the Single Responsibility Principle and Dependency Inversion. Acting as a practical application of theoretical concepts that allowed me to understand their real-world implications better.
 
+#### Leveraging Existing Libraries
+
+In the spirit of simplicity and efficiency, I leveraged existing libraries to enhance FastML's capabilities. I utilized Skorch, a third-party library that acts as a wrapper for PyTorch models, making them compatible with the scikit-learn framework. This decision not only simplified the architecture but also allowed for cleaner, more focused classes.
+
+Through FastML, I've been able to marry theory with practice, gaining invaluable insights into how well-designed software can adapt and evolve. While the project is currently modest in scale, its architecture is designed for future growth.
 
 ---
 ## Flowchart
@@ -59,6 +63,7 @@ graph TD;
 
 ### Additional Principles Addressed:
 - **Liskov Substitution Principle**: The architecture employs an interface for the Evaluator class, facilitating the substitution of various evaluator types without disrupting the system's integrity. While this is a step in the right direction, additional opportunities for improvement exist. Specifically, classes like GridSearch and GridResult could also be abstracted into interfaces, thereby enhancing the system's flexibility and extensibility.
+
 - **Interface Segregation Principle**:
 In alignment with the Liskov Substitution Principle, the Evaluator interface has been designed to be modular and focused. This approach allows for the segregation of responsibilities into smaller, more specialized interfaces, should the need arise in future iterations of the project.
 
