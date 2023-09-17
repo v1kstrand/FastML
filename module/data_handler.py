@@ -1,3 +1,25 @@
+"""
+FastML Data Handler Module
+==========================
+
+This module provides classes and functions for handling data in the FastML 
+framework. It includes utilities for data validation, cleaning, and 
+transformation.
+
+Classes
+-------
+- DataValidator : Validates the integrity of the input DataFrame.
+- DataCleaner : Cleans and preprocesses the DataFrame.
+- DataTransformer : Orchestrates the data transformation process.
+
+Each class is designed to perform specific tasks related to data handling, 
+ensuring that the data is ready for machine learning algorithms.
+
+Usage
+-----
+Import this module to use its classes and functions in your FastML workflow.
+"""
+
 from typing import Optional, Union
 
 import numpy as np
