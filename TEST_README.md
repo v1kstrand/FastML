@@ -8,6 +8,8 @@ At present, the test modules lack comprehensive documentation, an issue I plan t
 
 - If no specific aspects are being tested, the function name is simply the name of the method being tested.
 
+- More involved tests will be accompanied with additional comments
+
 For example:
 
 ```python
