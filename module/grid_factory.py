@@ -1,3 +1,21 @@
+"""
+FastML Grid Factory Module
+==========================
+
+This module is responsible for preparing the grid search configurations
+and evaluators for machine learning models. It serves as a factory for
+creating grid search setups tailored for classification and regression.
+
+Classes
+-------
+- GridFactory : Factory class for grid search configurations.
+
+Usage
+-----
+Import this module to generate grid search configurations and evaluators
+for use in your FastML workflow.
+"""
+
 import numpy as np
 
 from module.evaluators import (
