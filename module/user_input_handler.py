@@ -124,10 +124,10 @@ class InputValidator:
                 continue
             try:
                 assert rule(user_input[key])
-            except ValueError as e:
+            except:
                 raise ValueError(
                     f"Invalid value for {key}. Please check the user input file."
-                ) from e
+                )
 
 
 class UserInputHandler:
