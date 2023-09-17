@@ -1,3 +1,27 @@
+"""
+User Input Handler Module for FastML
+====================================
+
+This module is responsible for collecting, validating, and parsing
+user input. It ensures that the user-provided configurations are
+correct and usable for the FastML workflow.
+
+Classes
+-------
+- InputValidator : Validates user input based on set of rules.
+
+- UserInputHandler : Encapsulates the logic for handling user input,
+                     including reading, validation, and parsing.
+
+Usage
+-----
+Import this module to handle user input in the FastML project.
+
+"""
+
+Feel free to replace AnotherClass with the actual name of the second class and provide a brief description of its functionality.
+
+
 import os
 import re
 from typing import Union
