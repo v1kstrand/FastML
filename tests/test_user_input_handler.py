@@ -139,25 +139,25 @@ def test_validate_rules(valid_input):
 
 def test_validate_rules_invalid_csv_path(valid_input):
     valid_input["csv_path"] = "invalid_path"
-    with pytest.raises(FileNotFoundError):
+    with pytest.raises(ValueError):
         InputValidator.validate_rules(valid_input)
 
 
 def test_validate_rules_invalid_task_type(valid_input):
     valid_input["task_type"] = "invalid"
-    with pytest.raises(AssertionError):
+    with pytest.raises(ValueError):
         InputValidator.validate_rules(valid_input)
 
 
 def test_validate_rules_invalid_scale(valid_input):
     valid_input["scale"] = "invalid"
-    with pytest.raises(AssertionError):
+    with pytest.raises(ValueError):
         InputValidator.validate_rules(valid_input)
 
 
 def test_validate_rules_invalid_split_size(valid_input):
     valid_input["split_size"] = "2"
-    with pytest.raises(AssertionError):
+    with pytest.raises(ValueError):
         InputValidator.validate_rules(valid_input)
 
 
