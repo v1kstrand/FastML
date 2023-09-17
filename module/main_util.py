@@ -1,3 +1,27 @@
+"""
+Main Utilities Module for FastML
+================================
+
+This module provides utility functions that are used in the main module
+to orchestrate the end-to-end machine learning workflow. It includes
+functions for handling user input, data transformation, model preparation,
+grid search execution, and saving the best model.
+
+Functions
+---------
+- handle_user_input() : Collects and validates user input.
+- transform_data() : Transforms and splits the dataset.
+- prepare_models_and_grid() : Prepares models and grid configurations.
+- perform_grid_search() : Executes grid search on models.
+- save_best_model() : Saves the best-performing model.
+
+Usage
+-----
+Import this module to access utility functions that facilitate the
+machine learning workflow in the FastML project.
+
+"""
+
 import numpy as np
 from sklearn.base import BaseEstimator
 
