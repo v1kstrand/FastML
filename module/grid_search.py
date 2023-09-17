@@ -1,3 +1,21 @@
+"""
+Grid Search Module for FastML
+=============================
+
+This module provides the GridSearch class, responsible for executing
+grid search algorithms for hyperparameter tuning.
+
+Classes
+-------
+- GridSearch : Orchestrates the grid search process.
+
+Usage
+-----
+Import this module to utilize the GridSearch class for hyperparameter
+tuning in machine learning tasks.
+
+"""
+
 import warnings
 
 import numpy as np
