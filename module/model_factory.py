@@ -1,3 +1,24 @@
+"""
+Model Factory Module for FastML
+===============================
+
+This module is responsible for generating machine learning models and
+their corresponding parameter grids. It supports both classification
+and regression tasks, and can work with various libraries like
+Scikit-Learn and PyTorch.
+
+Classes
+-------
+- ModelFactory : A class that encapsulates the logic for creating
+                 machine learning models and their parameter grids.
+
+Usage
+-----
+Import this module to generate models and parameter grids for use in
+the FastML project's grid search functionality.
+
+"""
+
 from typing import Union
 
 import numpy as np
