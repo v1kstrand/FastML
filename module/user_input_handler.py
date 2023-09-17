@@ -19,9 +19,6 @@ Import this module to handle user input in the FastML project.
 
 """
 
-Feel free to replace AnotherClass with the actual name of the second class and provide a brief description of its functionality.
-
-
 import os
 import re
 from typing import Union
