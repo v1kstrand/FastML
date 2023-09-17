@@ -1,3 +1,32 @@
+"""
+Utility Functions and Classes for FastML
+========================================
+
+This module contains utility functions and classes that support the
+FastML project. It includes methods for file handling, user input
+validation, and model saving.
+
+Constants
+---------
+- CLASSIFICATION_THRESHOLD : Maximum number of unique values for
+  classification models.
+- USER_FILE : Template for user input file.
+
+Classes
+-------
+- FileHandler : Handles file-related operations. For handeling the
+                user input file.
+
+Functions
+---------
+- get_user_choice : Gets and validates user's choice.
+- validate_data_type : Validates the data type for the model.
+- print_headline : Prints a formatted headline.
+- save_model : Saves the trained model.
+- read_data : Reads and validates DataFrames.
+"""
+
+
 import os
 from math import inf
 from pathlib import Path
