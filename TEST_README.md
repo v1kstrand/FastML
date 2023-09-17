@@ -1,4 +1,6 @@
-My project boasts a test coverage of 98% using pytest, a testing framework I've chosen for its clean and less verbose syntax compared to the traditional unittest. 
+I've chosen to work with pytest for testing on this project, its clean and less verbose syntax compared to the traditional unittest made me want do dive deeper into the library.
+
+The project boasts a test coverage of 98% using pytest.
 
 At present, the test modules lack comprehensive documentation, an issue I plan to address in the near future. As it stands, the existing documentation structure is as follows:
 
