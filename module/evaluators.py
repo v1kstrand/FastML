@@ -1,3 +1,26 @@
+"""
+FastML Evaluators Module
+========================
+
+This module contains classes responsible for evaluating machine learning 
+models. It provides a unified interface for both classification and 
+regression tasks.
+
+Classes
+-------
+- Evaluator : Abstract base class for all evaluators.
+- ClassifierEvaluator : Evaluates classification models.
+- RegressorEvaluator : Evaluates regression models.
+
+Each evaluator class calculates and stores various evaluation metrics, 
+allowing for a comprehensive assessment of model performance.
+
+Usage
+-----
+Import this module to utilize its evaluator classes in your FastML workflow.
+"""
+
+
 from abc import ABC, abstractmethod
 
 import numpy as np
