@@ -15,7 +15,7 @@ The development of FastML became a hands-on learning experience for me. I took t
 
 In the spirit of simplicity and efficiency, I leveraged existing libraries to enhance FastML's capabilities. I utilized Skorch, a third-party library that acts as a wrapper for PyTorch models, making them compatible with the scikit-learn framework. This decision not only simplified the architecture but also allowed for cleaner, more focused classes.
 
-Through FastML, I've been able to marry theory with practice, gaining invaluable insights into how well-designed software can adapt and evolve. While the project is currently modest in scale, its architecture is designed for future growth.
+Through FastML, I've been able to marry theory with practice, gaining many insights into how well-designed software can adapt and evolve. While the project is currently modest in scale, its architecture is designed for possible future growth.
 
 ---
 ## Flowchart
