@@ -62,10 +62,10 @@ graph TD;
 
 
 ### Additional Principles Addressed:
-- **Liskov Substitution Principle**: The architecture employs an interface for the Evaluator class, facilitating the substitution of various evaluator types without disrupting the system's integrity. While this is a step in the right direction, additional opportunities for improvement exist. Specifically, classes like GridSearch and GridResult could also be abstracted into interfaces, thereby enhancing the system's flexibility and extensibility.
+- **Liskov Substitution Principle**: The architecture employs an interface for the `Evaluator` class, facilitating the substitution of various evaluator types without disrupting the system's integrity. While this is a step in the right direction, additional opportunities for improvement exist. Specifically, classes like `GridSearch` and `GridResult` could also be abstracted into interfaces, thereby enhancing the system's flexibility and extensibility.
 
 - **Interface Segregation Principle**:
-In alignment with the Liskov Substitution Principle, the Evaluator interface has been designed to be modular and focused. This approach allows for the segregation of responsibilities into smaller, more specialized interfaces, should the need arise in future iterations of the project.
+In alignment with the Liskov Substitution Principle, the `Evaluator` interface has been designed to be modular and focused. This approach allows for the segregation of responsibilities into smaller, more specialized interfaces, should the need arise in future iterations of the project.
 
 ---
 
