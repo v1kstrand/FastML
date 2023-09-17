@@ -1,3 +1,21 @@
+"""
+FastML Grid Result Module
+=========================
+
+This module is designed to store and manage the results of grid search
+operations. It holds metrics and configurations for each model, allowing
+for easy comparison and selection of the best model.
+
+Classes
+-------
+- GridResult : Class for storing grid search results and metrics.
+
+Usage
+-----
+Import this module to store and manage grid search results in your FastML
+workflow.
+"""
+
 from collections import defaultdict
 
 from sklearn.model_selection import GridSearchCV
