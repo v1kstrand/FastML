@@ -29,15 +29,13 @@ class GridResult:
     It stores the evaluation scores and models in dictionaries.
 
     Args:
-     - score_dict (dict[str, tuple[int, str, str]]): A dictionary
-         containing the evaluation scores, models, and other information.
-         Where {metric: (score, model, comparator)}. (comparator is
-         either '>' or '<' depending on whether a higher or lower score
-         is desired, such as for accuracy or loss.)
+     - metrics (list[str]): A list of all the metrics being evaluated
 
     Attributes:
      - grid_results (dict[str, GridSearchCV]): A dictionary to store
-         the grid search results. e.g. {LogisticRegression: grid_search_object}
+         the grid search results. e.g. {"SVC": grid_search_object}
+     - score_dict (dict[str, dict[str, int]]): A dictionary to store
+         the score for each model based on the metrics in self.metricss
 
     Methods:
      - add_grid_result(grid: GridSearchCV, model_type: str) -> None:
